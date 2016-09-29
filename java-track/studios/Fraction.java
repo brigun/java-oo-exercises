@@ -65,19 +65,24 @@ public class Fraction
 	
 	public Fraction simplify()
 	{
-		if (this.denominator % this.numerator == 0)
+		int factor = this.findGCF(this);
+		Fraction output = new Fraction(this.numerator / factor, this.denominator / factor);
+		return output;
+	}
+	
+	public int findGCF(Fraction target)
+	{
+		int gcf = 0;
+		for (int i = 2; i < target.numerator * target.denominator; i++)
 		{
-			int nextN = this.numerator / this.numerator;
-			int nextD = this.denominator / this.numerator;
-			
-			Fraction simpler = new Fraction(nextN, nextD);
-			return simpler;
+			if (target.numerator % i == 0 && target.denominator % i == 0)
+			{
+				gcf = i;
+			}
 		}
-		else
-		{
-			return this;
-		}
-			
+		
+		return gcf;
+	
 	}
 	
 	public static void main(String[] args)
