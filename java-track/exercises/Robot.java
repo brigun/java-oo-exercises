@@ -23,6 +23,12 @@ public class Robot {
 		return y;
 	}
 	
+	public int getPosition()
+	{
+		int a = this.getX();
+		int b = this.getY();
+		return a & b;
+	}
 	public int getOrientation()
 	{
 		return orientation;
@@ -33,22 +39,51 @@ public class Robot {
 		return speed;
 	}
 
-	public void setX(int x) {
+	public void setX(int x)
+	{
 		this.x = x;
 	}
 
-	public void setY(int y) {
+	public void setY(int y)
+    {
 		this.y = y;
 	}
 
-	public void setOrientation(int orientation) {
+	public void setOrientation(int orientation) 
+	{
 		if (orientation >= 360)
 				orientation = 0;
 		
 		this.orientation = orientation;
 	}
 
-	public void setSpeed(int speed) {
+	public void setSpeed(int speed) 
+	{
 		this.speed = speed;
+	}
+	
+	public void moveRobot()
+	{
+		int	a = this.getOrientation();
+		if (a == 0)
+		{
+			int newPosition = this.getX() + this.getSpeed();
+			this.setX(newPosition);
+		}
+		else if( a == 90)
+		{
+			int newPosition = this.getY() - this.getSpeed();
+			this.setY(newPosition);
+		}
+		else if (a == 180)
+		{
+			int newPosition = this.getX() - this.getSpeed();
+			this.setX(newPosition);
+		}
+		else if ( a == 270)
+		{
+			int newPosition = this.getY() + this.getSpeed();
+			this.setY(newPosition);
+		}
 	}
 }
