@@ -162,7 +162,7 @@ public class Robot {
 	
 	public String toString()
 	{
-		return "Name: " + this.name + " Position: " + this.getX() + ", " + this.getY() + " Speed: " + this.getSpeed() + " Orientation: " + this.getOrientationString();
+		return "Name: " + this.name + " Position: (" + this.getX() + ", " + this.getY() + ") Speed: " + this.getSpeed() + " Orientation: " + this.getOrientationString();
 	}
 	
 	public static void main(String[] args)
