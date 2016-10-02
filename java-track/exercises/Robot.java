@@ -63,6 +63,8 @@ public class Robot {
 
 	public void setOrientation(int orientation) 
 	{
+		if (orientation >= 360)
+			orientation = 0;
 		this.orientation = orientation;
 	}
 
