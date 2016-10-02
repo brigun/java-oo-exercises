@@ -26,7 +26,9 @@ public class RobotMenu
 	
 	public int startMenu()
 	{
+		System.out.println();
 		System.out.println("Welcome to the GunterTech Virtual Robot Factory Menu!");
+		System.out.println();
 		System.out.println("What would you like to do today?");
 		System.out.println("1. Create a robot");
 		System.out.println("2. Display the list of available robots");
@@ -109,6 +111,8 @@ public class RobotMenu
 				r.turnLeft();
 			}
 			
+			System.out.println("Your robot " + r.getName() + " is now facing " + r.getOrientationString());
+			
 		}
 		else if (selection == 5)
 		{
@@ -126,6 +130,10 @@ public class RobotMenu
 	
 	private void displayRobots()
 	{
+		if (robots.size() < 1)
+		{
+			createRobot();
+		}
 		for (int i = 0; i < robots.size(); i++)
 		{
 			System.out.println((i+1) + ". " + robots.get(i));
