@@ -37,7 +37,7 @@ public class Fraction
 	
 	public Fraction addFraction(Fraction toSum)
 	{
-		int top = (this.getNumerator() * toSum.getDenominator()) + (toSum.getNumerator() * toSum.getDenominator());
+		int top = (this.getNumerator() * toSum.getDenominator()) + (toSum.getNumerator() * this.getDenominator());
 		int bottom = this.getDenominator() * toSum.getDenominator();
 		
 		Fraction summation = new Fraction(top, bottom);
