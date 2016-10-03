@@ -49,11 +49,11 @@ public class Rectangle
 	{
 		if (this.length == this.width)
 		{
-			return false;
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
 	}
 	
