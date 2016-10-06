@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/launchcode-fetch/master
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -83,47 +86,20 @@ public class StudentAndCourseTest extends TestCase {
 	@Test
 	public void testComputeTuition() {
 		Student s = new Student("D", "S", 1);
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 14; i++) {
 			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0, s.computeTuition());
+			assertEquals("Compute tution not working properly", (i+1) * 1333.33, s.computeTuition());
 		}
 
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*2, s.computeTuition());
-		}
+		s.submitGrade(0, 1);
+		assertEquals("Compute tution not working properly", 20000.0, s.computeTuition());
 
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 14; i++) {
 			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*3, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*4, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*5, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*6, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*7, s.computeTuition());
-		}
-
-		for (int i = 0; i < 15; i++) {
-			s.submitGrade(0, 1);
-			assertEquals("Compute tution not working properly", 20000.0*8, s.computeTuition());
+			assertEquals("Compute tution not working properly", 1333.33 * (i+1) + 20000.0, s.computeTuition());
 		}
 	}
-	/*
+	
 
 	@Test
 	public void testCreateLegacy() {
@@ -140,7 +116,7 @@ public class StudentAndCourseTest extends TestCase {
 			int c2 = (int)(Math.random() * 120 + 1);
 			double g2 = Math.round(Math.random() * 4000) / 1000.0;
 			ss.submitGrade(g2, c2);
-			Student bb = s.createLegacy(ss);
+			Student bb = s.createLegacy(s, ss);
 			assertTrue("create baby not setting name properly", bb.getName().contains(s.getName()) && bb.getName().contains(ss.getName()));
 			assertEquals("create baby not setting gpa properly", (g + g2) / 2, bb.getGPA(), 0.01);
 			assertEquals("create baby not setting credits properly", bb.getCredits(), Math.max(c, c2));
@@ -157,7 +133,7 @@ public class StudentAndCourseTest extends TestCase {
 
 		}
 	}
-*/
+
 	
 	@Test
 	public void testStudentToString() {
@@ -172,7 +148,7 @@ public class StudentAndCourseTest extends TestCase {
 		}
 	}
 
-/*
+
 
 
 
@@ -256,7 +232,7 @@ public class StudentAndCourseTest extends TestCase {
 			assertTrue("course toString does not contain credits", cc.toString().contains("" + c));
 		}
 	}
-*/
+
 
 
 }
