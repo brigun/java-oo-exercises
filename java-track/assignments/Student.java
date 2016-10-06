@@ -117,14 +117,31 @@ public class Student
 	{
 		double tuition = 0.0;
 		int c = this.getCredits();
-		double tuitionPerCredit = (20000.00 / 15);
-		
-		if (c <= 15)
+		double tuitionPerCredit = 1333.33;
+		while (c >= 15)
 		{
-			tuition = 20000.00;
+			c = c - 15;
+			tuition += 20000.00;
 		}
-		
+		tuition += Math.round(c * tuitionPerCredit * 100)/ 100.00;
 		return tuition;
+	}
+	
+	public Student createLegacy(Student first, Student second)
+	{
+		Student legacy = new Student(first.getName(), second.getName(), first.getStudentID() + second.getStudentID());
+		int legacyCredit = 0;
+		legacy.setGPA((first.getGPA() + second.getGPA())/2.0);
+		if (first.getCredits() > second.getCredits())
+		{
+			legacyCredit = first.getCredits();
+		}
+		else
+		{
+			legacyCredit = second.getCredits();
+		}
+		legacy.setCredits(legacyCredit);
+		return legacy;
 	}
 	
 }

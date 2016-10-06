@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/launchcode-fetch/master
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -150,7 +147,7 @@ public class StudentAndCourseTest extends TestCase {
 
 
 
-
+/*
 
 	// TESTING COURSE CLASS HERE . . . FEEL FREE TO WRITE YOUR OWN, BUT DON'T CHANGE THIS ONE
 	// once again, we are watching you
@@ -233,6 +230,6 @@ public class StudentAndCourseTest extends TestCase {
 		}
 	}
 
-
+*/
 
 }
