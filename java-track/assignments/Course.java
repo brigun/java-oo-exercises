@@ -53,5 +53,75 @@ public class Course
 		this.roster = roster;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return "Course: " + this.getName() + ", Credits: " + this.getCredits(); 
+	}
 	
+	public boolean addStudent(Student s)
+	{
+		if (this.getRemainingSeats() < 1)
+			return false;
+		
+		Student[] r = this.getRoster();
+		
+		for (int i = 0; i < this.getRoster().length; i++)
+		{
+			if (r[i] != null && r.length > 0)
+			{
+				if (r[i].getName() == s.getName())
+				{
+					return false;
+				}
+			}
+			else
+			{
+				int seats = this.getRemainingSeats() - 1;
+				r[i] = s;
+				this.setRemainingSeats(seats);
+				return true;
+			}
+			
+		}
+		return false;
+	}
+	
+	public String generateRoster()
+	{
+		String response = "";
+		Student[] r = this.getRoster();
+		if (r.length == 0)
+		{
+			response = "There are no students enrolled at this time.";
+			return response;
+		}
+		for(int i = 0; i < r.length; i++)
+		{
+			if (r[i] != null && r.length > 0)
+			{
+				response = response + r[i].getName() + ", ";
+			}
+		}
+		return response;
+	}
+	
+	public double averageGPA()
+	{
+		double avg = 0.0;
+		double gpaTotal = 0.0;
+		int enrolled = 0;
+		Student[] r = this.getRoster();
+		for( int i = 0; i < r.length; i++)
+		{
+			if ( r[i] != null && r.length > 0)
+			{
+				gpaTotal = gpaTotal + r[i].getGPA();
+				enrolled = enrolled + 1;
+			}
+			
+		}
+		avg = (double) gpaTotal / enrolled;
+		return avg;
+	}
 }
