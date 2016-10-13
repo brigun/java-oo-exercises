@@ -1,10 +1,10 @@
 
 public class Robot {
 	
-	private String name;
-	private int x,y;
-	private int orientation;
-	private int speed;
+	protected String name;
+	protected int x,y;
+	protected int orientation;
+	protected int speed;
 	
 	public Robot(String name, int startX, int startY, int startOrientation, int startSpeed)
 	{
