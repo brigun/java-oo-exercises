@@ -126,7 +126,7 @@ public class Student
 		return tuition;
 	}
 	
-	public Student createLegacy(Student first, Student second)
+	public static Student createLegacy(Student first, Student second)
 	{
 		Student legacy = new Student(first.getName(), second.getName(), first.getStudentID() + second.getStudentID());
 		int legacyCredit = 0;
