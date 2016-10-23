@@ -7,7 +7,7 @@ public class Post extends Entity
 	private String title;
 	private String body;
 	private User author;
-	private Date created;
+	private final Date created;
 	private Date edited;
 	
 	public Post(String name, String text, User author)
@@ -16,8 +16,7 @@ public class Post extends Entity
 		this.title = name;
 		this.body = text;
 		this.author = author;
-		Date d = new Date();
-		final Date created = d;
+		this.created = new Date();
 		this.edited = created;
 	}
 	

@@ -2,12 +2,12 @@ package blogz;
 
 public abstract class Entity {
 	private static int allEntities;
-	private int uid;
+	private final int uid;
 	
 	public Entity()
 	{
 		allEntities = allEntities + 1;
-		final int uid = allEntities;
+		uid = allEntities;
 	}
 	
 	public int getUid()
@@ -15,10 +15,6 @@ public abstract class Entity {
 		return this.uid;
 	}
 	
-	private static int getAllEntities()
-	{
-		return Entity.allEntities;
-	}
 	
 
 }
