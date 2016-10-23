@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Course 
 {
@@ -6,12 +7,14 @@ public class Course
 	private int remainingSeats;
 	private Student[] roster;
 	
+	
 	public Course(String name, int credits, int seats)
 	{
 		this.name = name;
 		this.credits = credits;
 		remainingSeats = seats;
 		roster = new Student[remainingSeats];
+		
 	}
 
 	public String getName() 
@@ -52,6 +55,7 @@ public class Course
 	{
 		this.roster = roster;
 	}
+	
 	
 	@Override
 	public String toString()

@@ -220,7 +220,8 @@ public class StudentAndCourseTest extends TestCase {
 			}
 		}
 	}
-
+	
+	
 	@Test
 	public void testCourseToString() {
 		for (int i = 0; i < 100; i++) {
