@@ -40,10 +40,11 @@ public class Javagram {
 		} while(picture == null);
 		
 		// TODO - prompt user for filter and validate input
+		int pick = displayFilterMenu();
 		
 		
 		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
-		Filter filter = getFilter();			
+		Filter filter = getFilter(pick);			
 
 		// filter and display image
 		Picture processed = filter.process(picture);
@@ -78,33 +79,77 @@ public class Javagram {
 		
 		switch (choice)
 		{
-			case 1: Filter p = new Posterize();
-				return p;
+			case 1: Filter f = new Posterize();
+				break;
 			
 			case 2: Filter f = new Greyscale();
-				return f;
+				break;	
 			
-			case 3: Filter i = new Inverse();
-				return i;
+			case 3: Filter f = new Inverse();
+				break;
 			
-			case 4: Filter l = new LowRes();
-				return l;
+			case 4: Filter f = new LowRes();
+				break;
 			
-			case 5: Filter b = new BlueFilter();
-				return b;
+			case 5: Filter f = new BlueFilter();
+				break;
 				
-			default: 
+			case 6: Filter f = new GreenFilter();
+				break;
+				
+			case 7: Filter f = new RedFilter();
+				break;
+				
+			default: System.out.println("Invalid choice selected, please select from the list.");
 		}
+		return f;
 		
 		
 	}
 	
 	private static int displayFilterMenu()
 	{
-		Scanner in = new Scanner(System.in)
 		int pick = 0;
+		System.out.println("Please select a filter:");
+		System.out.println();
+		System.out.println("1 - Posterize");
+		System.out.println("2 - Greyscale");
+		System.out.println("3 - Inverse");
+		System.out.println("4 - LowRes");
+		System.out.println("5 - BlueFilter");
+		System.out.println("6 - RedFilter");
 		
+		pick = getInput();
+			
 		return pick;
+	}
+	
+	public static int getInput()
+	{
+		Scanner in = new Scanner(System.in);
+		try
+		{
+			boolean b = in.hasNextInt();
+		}
+		catch(IllegalArgumentException e)
+		{
+			System.out.println("Please try to enter a number from the list provided.");
+			getInput();
+		}
+	
+		int a = 0;
+		
+		if (in.hasNextInt())
+		{
+			a = in.nextInt();
+		}
+		else
+		{
+			System.out.println("Please enter a number.");
+			getInput();
+		}
+		in.close();
+		return a;
 	}
 
 }
