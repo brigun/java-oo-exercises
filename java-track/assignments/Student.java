@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Student 
 {
 	private String firstName;
@@ -143,4 +145,27 @@ public class Student
 		return legacy;
 	}
 	
+	@Override
+	public boolean equals(Object o)
+	{
+		//self check
+		if(this == o)
+			return true;
+		
+		//null check
+		if (o == null)
+			return false;
+		
+		//type check
+		if (getClass() != o.getClass())
+			return false;
+		
+		//cast to Student
+		Student s = (Student) o;
+		
+		//field comparisons
+		return Objects.equals(this.getName(), s.getName()) && Objects.equals(this.getStudentID(), s.getStudentID());
+	}
+	
 }
+

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Course 
 {
@@ -127,5 +128,27 @@ public class Course
 		}
 		avg = (double) gpaTotal / enrolled;
 		return avg;
+	}
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		//self check
+		if(this == o)
+			return true;
+		
+		//null check
+		if (o == null)
+			return false;
+		
+		//type check
+		if (getClass() != o.getClass())
+			return false;
+		
+		//cast to Course
+		Course c = (Course)o;
+		
+		//compare fields
+		return Objects.equals(this.getName(), c.getName()) && Objects.equals(this.getCredits(), c.getCredits());
 	}
 }
