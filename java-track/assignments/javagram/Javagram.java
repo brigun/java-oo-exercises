@@ -13,7 +13,7 @@ public class Javagram {
 		// Create the base path for images		
 		String[] baseParts = {System.getProperty("user.dir"), "images"};
 		String dir = String.join(File.separator, baseParts);
-		String relPath;
+		String relPath = "";
 		Picture picture = null;
 		Scanner in = new Scanner(System.in);
 		
@@ -27,10 +27,12 @@ public class Javagram {
 				
 				System.out.println("Image path (relative to " + dir + "):");
 				relPath = in.next();
-				
+				/*
 				String[] relPathParts = relPath.split(File.separator);
 				imagePath = dir + File.separator + String.join(File.separator, Arrays.asList(relPathParts));
-				
+				*/
+				imagePath= (dir + "\\" + relPath );
+						
 				picture = new Picture(imagePath);
 				
 			} catch (RuntimeException e) {
@@ -58,6 +60,16 @@ public class Javagram {
 		String fileName = in.next();
 		
 		// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
+		if (fileName.equals(relPath))
+		{
+			System.out.println("Overwrite original file? y OR n");
+			String confirm = in.next();
+			if(confirm.equals("n"))
+			{
+				System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
+				fileName = in.next();
+			}
+		}
 		
 		if (fileName.equals("exit")) {
 			System.out.println("Image not saved");
@@ -76,33 +88,33 @@ public class Javagram {
 	private static Filter getFilter(int choice) 
 	{
 		// TODO - create some more filters, and add logic to return the appropriate one
-		
+		Filter selection = null;
 		switch (choice)
 		{
-			case 1: Filter f = new Posterize();
+			case 1: selection = new Posterize();
 				break;
 			
-			case 2: Filter f = new Greyscale();
+			case 2: selection = new Greyscale();
 				break;	
 			
-			case 3: Filter f = new Inverse();
+			case 3: selection = new Inverse();
 				break;
 			
-			case 4: Filter f = new LowRes();
+			case 4: selection = new LowRes();
 				break;
 			
-			case 5: Filter f = new BlueFilter();
+			case 5: selection = new BlueFilter();
 				break;
 				
-			case 6: Filter f = new GreenFilter();
+			case 6: selection = new GreenFilter();
 				break;
 				
-			case 7: Filter f = new RedFilter();
+			case 7: selection = new RedFilter();
 				break;
 				
 			default: System.out.println("Invalid choice selected, please select from the list.");
 		}
-		return f;
+		return selection;
 		
 		
 	}
@@ -117,8 +129,8 @@ public class Javagram {
 		System.out.println("3 - Inverse");
 		System.out.println("4 - LowRes");
 		System.out.println("5 - BlueFilter");
-		System.out.println("6 - RedFilter");
-		
+		System.out.println("6 - GreenFilter");
+		System.out.println("7 - RedFilter");
 		pick = getInput();
 			
 		return pick;
@@ -148,7 +160,7 @@ public class Javagram {
 			System.out.println("Please enter a number.");
 			getInput();
 		}
-		in.close();
+		
 		return a;
 	}
 
