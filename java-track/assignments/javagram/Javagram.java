@@ -43,10 +43,9 @@ public class Javagram {
 		
 		// TODO - prompt user for filter and validate input
 		int pick = 0;
-		do
-		{
+		
 		pick = displayFilterMenu();
-		}while (pick < 1 && pick > 7);
+		
 		
 		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
 		Filter filter = getFilter(pick);			
@@ -103,7 +102,7 @@ public class Javagram {
 			case 3: selection = new Inverse();
 				break;
 			
-			case 4: selection = new LowRes();
+			case 4: selection = new Flip();
 				break;
 			
 			case 5: selection = new BlueFilter();
@@ -131,10 +130,11 @@ public class Javagram {
 		System.out.println("1 - Posterize");
 		System.out.println("2 - Greyscale");
 		System.out.println("3 - Inverse");
-		System.out.println("4 - LowRes(not implemented yet, do not choose");
+		System.out.println("4 - Flip");
 		System.out.println("5 - BlueFilter");
 		System.out.println("6 - GreenFilter");
 		System.out.println("7 - RedFilter");
+		
 		pick = getInput();
 			
 		return pick;
