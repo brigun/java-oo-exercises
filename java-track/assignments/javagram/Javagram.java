@@ -114,6 +114,9 @@ public class Javagram {
 			case 7: selection = new RedFilter();
 				break;
 				
+			case 8: selection = new Flop();
+				break;
+				
 			
 			
 		}
@@ -134,6 +137,7 @@ public class Javagram {
 		System.out.println("5 - BlueFilter");
 		System.out.println("6 - GreenFilter");
 		System.out.println("7 - RedFilter");
+		System.out.println("8 - Flop");
 		
 		pick = getInput();
 			
@@ -153,7 +157,7 @@ public class Javagram {
 			in.nextLine();
 		}
 		a = in.nextInt();
-		if (a < 1 || a > 7)
+		if (a < 1 || a > 8)
 			{
 			
 				System.out.println("Please select a choice from the list.");
