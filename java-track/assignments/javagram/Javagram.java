@@ -42,8 +42,11 @@ public class Javagram {
 		} while(picture == null);
 		
 		// TODO - prompt user for filter and validate input
-		int pick = displayFilterMenu();
-		
+		int pick = 0;
+		do
+		{
+		pick = displayFilterMenu();
+		}while (pick < 1 && pick > 7);
 		
 		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
 		Filter filter = getFilter(pick);			
@@ -112,7 +115,8 @@ public class Javagram {
 			case 7: selection = new RedFilter();
 				break;
 				
-			default: System.out.println("Invalid choice selected, please select from the list.");
+			
+			
 		}
 		return selection;
 		
@@ -127,7 +131,7 @@ public class Javagram {
 		System.out.println("1 - Posterize");
 		System.out.println("2 - Greyscale");
 		System.out.println("3 - Inverse");
-		System.out.println("4 - LowRes");
+		System.out.println("4 - LowRes(not implemented yet, do not choose");
 		System.out.println("5 - BlueFilter");
 		System.out.println("6 - GreenFilter");
 		System.out.println("7 - RedFilter");
@@ -139,29 +143,30 @@ public class Javagram {
 	public static int getInput()
 	{
 		Scanner in = new Scanner(System.in);
-		try
-		{
-			boolean b = in.hasNextInt();
-		}
-		catch(IllegalArgumentException e)
-		{
-			System.out.println("Please try to enter a number from the list provided.");
-			getInput();
-		}
-	
+		boolean loop = false;
 		int a = 0;
-		
-		if (in.hasNextInt())
+		do
 		{
-			a = in.nextInt();
-		}
-		else
+		while (!in.hasNextInt())
 		{
-			System.out.println("Please enter a number.");
-			getInput();
+			System.out.println("Please enter a number from the list");
+			in.nextLine();
 		}
-		
+		a = in.nextInt();
+		if (a < 1 || a > 7)
+			{
+			
+				System.out.println("Please select a choice from the list.");
+				in.nextLine();
+				loop = true;
+			}
+		else{
+			return a;
+		}
+		}while(loop = true);
 		return a;
+		}
 	}
 
-}
+	
+
