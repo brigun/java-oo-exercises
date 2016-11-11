@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="base :: head"></head>
+<body>
+<h1>new post</h1>
+
+<form method="post">
+    <label>
+        <span>title</span>
+        <input type="text" name="title" value="title" th:value="${title}"/>
+    </label>
+    <label>
+        <span>post</span>
+        <textarea name="body" th:text="${body}"></textarea>
+    </label>
+    <div class="error" th:text="${error}"></div>
+    <input type="submit"/>
+</form>
+
+</body>
+<footer th:replace="base :: footer"></footer>
+</html>

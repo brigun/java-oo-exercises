@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="base :: head"></head>
+<body>
+<h1>blogs</h1>
+
+<div th:each="post : ${blogs}">
+
+<h2><a th:href="@{/blog/${ post.key().id()}}" th:text="${post.title}"></a></h2>
+<p th:text="${post.body}"></p>
+<!-- TODO add author w/ link to author's blog page -->
+<p class="post-author">written by <a th:href="@{/blog/${post.author.username}}" th:text="${post.author.username}"></a></p>
+
+</div>
+
+<div th:if="${username}">
+    
+    <a th:if="${prev_page>" th:href="@{/blog/${ username }?page=${ prev_page }}">&lt; prev</a>
+    
+
+   <span th:if="${prev_page} AND ${next_page }">
+    &nbsp;&nbsp; | &nbsp;&nbsp;
+    </span>
+    <span th:if="${next_page}">
+    <a th:href="@{/blog/${ username }?page=${ next_page }}">next &gt;</a>
+    </span>
+
+
+
+    <a th:if="$!{username} AND ${prev_page}" th:href="@{/blog?page=${ prev_page }}">&lt; prev</a>
+    
+
+    
+    <span th:if="${prev_page} AND ${next_page}" th:text="&nbsp;&nbsp|&nbsp;&nbsp;"></span>
+    	<span th:if="${next_page}">
+    		<a th:href ="@{/blog?page=${next_page}}"></a>
+    	</span>
+</div>
+
+</body>
+<footer th:replace="base :: footer"></footer>
+</html>

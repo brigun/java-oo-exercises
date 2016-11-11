@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="base :: head"></head>
+
+<body th:object="${post}">
+<h2 class="post-title" th:text="*{title}"></h2>
+<p class="post-body" th:text="*{body}"></p>
+<!-- TODO add author w/ link to author's blog -->
+<p class="post-author">
+
+    written by <a th:href="@{/blog/*{author.username}}" th:text="*{author.username}"></a><span th:text="on *{created.strftime('%Y-%m-%d')}"></span></p>
+
+</body>
+</html>
